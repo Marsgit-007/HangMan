@@ -11,8 +11,28 @@ config_version=5
 [application]
 
 config/name="Hangman"
+run/main_scene="uid://4pm656trduls"
 config/features=PackedStringArray("4.5", "GL Compatibility")
 config/icon="res://icon.svg"
+
+[aseprite]
+
+import/import_plugin/default_automatic_importer="Static Texture"
+
+[autoload]
+
+SceneManager="*res://addons/scene_manager/SceneManager.tscn"
+
+[display]
+
+window/size/viewport_width=320
+window/size/viewport_height=180
+window/stretch/mode="viewport"
+window/stretch/scale_mode="integer"
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/AsepriteWizard/plugin.cfg", "res://addons/Todo_Manager/plugin.cfg", "res://addons/scene_manager/plugin.cfg")
 
 [rendering]
 
