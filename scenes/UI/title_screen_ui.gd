@@ -19,13 +19,8 @@ func _ready() -> void:
 
 	settings_dialog.custom_minimum_size = Vector2(0,0)
 	#sound_icon_1.texture.region = Rect2(SoundIcons.HIGH, 62,47,31)
-
-
-
-
 	
-
-
+	
 func _on_settings_button_pressed() -> void:
 	if settings_dialog.visible == false:
 		animation_player.play("open_SettingsDialog")
@@ -37,26 +32,19 @@ func _on_settings_button_pressed() -> void:
 
 
 func _on_h_slider_value_changed(value: float) -> void:
-	print("changed")
-	match value:
-		0.0:
-			sound_icon_1.texture.region = Rect2(SoundIcons.MUTE, 62,47,31)
-		1.0:
-			sound_icon_1.texture.region = Rect2(SoundIcons.LOW, 62,47,31)
-		2.0:
-			sound_icon_1.texture.region = Rect2(SoundIcons.MEDIUM, 62,47,31)
-		3.0:
-			sound_icon_1.texture.region = Rect2(SoundIcons.HIGH, 62,47,31)
+	change_volume_icon(value, sound_icon_1)
 
 
 func _on_h_slider_2_value_changed(value: float) -> void:
-	print("changed")
+	change_volume_icon(value, sound_icon_2)
+			
+func change_volume_icon(value, icon):
 	match value:
 		0.0:
-			sound_icon_2.texture.region = Rect2(SoundIcons.MUTE, 62,47,31)
+			icon.texture.region = Rect2(SoundIcons.MUTE, 62,47,31)
 		1.0:
-			sound_icon_2.texture.region = Rect2(SoundIcons.LOW, 62,47,31)
+			icon.texture.region = Rect2(SoundIcons.LOW, 62,47,31)
 		2.0:
-			sound_icon_2.texture.region = Rect2(SoundIcons.MEDIUM, 62,47,31)
+			icon.texture.region = Rect2(SoundIcons.MEDIUM, 62,47,31)
 		3.0:
-			sound_icon_2.texture.region = Rect2(SoundIcons.HIGH, 62,47,31)
+			icon.texture.region = Rect2(SoundIcons.HIGH, 62,47,31)
