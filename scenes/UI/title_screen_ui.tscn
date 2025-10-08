@@ -1,7 +1,11 @@
-[gd_scene load_steps=15 format=3 uid="uid://4pm656trduls"]
+[gd_scene load_steps=23 format=3 uid="uid://4pm656trduls"]
 
 [ext_resource type="Script" uid="uid://dichgsh28wgqw" path="res://scenes/UI/title_screen_ui.gd" id="1_egfx5"]
-[ext_resource type="Texture2D" uid="uid://6gubnod0a28l" path="res://assets/graphics/ui elements/UI elements.png" id="1_hn04l"]
+[ext_resource type="Texture2D" uid="uid://b15t1e04vrrkp" path="res://assets/graphics/ui elements/UI elements.png" id="1_hn04l"]
+[ext_resource type="FontFile" uid="uid://cqsxlhcg6pjf5" path="res://assets/fonts/dogicapixel.ttf" id="1_nwwcf"]
+
+[sub_resource type="Theme" id="Theme_sfh0t"]
+default_font = ExtResource("1_nwwcf")
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_egfx5"]
 atlas = ExtResource("1_hn04l")
@@ -27,17 +31,54 @@ region = Rect2(94, 31, 47, 31)
 atlas = ExtResource("1_hn04l")
 region = Rect2(141, 31, 47, 31)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_joti5"]
-atlas = ExtResource("1_hn04l")
-region = Rect2(188, 0, 94, 62)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_c62eg"]
 atlas = ExtResource("1_hn04l")
 region = Rect2(282, 0, 94, 62)
 
+[sub_resource type="LabelSettings" id="LabelSettings_on0i6"]
+font_size = 7
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_8pk4w"]
 atlas = ExtResource("1_hn04l")
 region = Rect2(188, 62, 47, 31)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g4027"]
+atlas = ExtResource("1_hn04l")
+region = Rect2(48, 96, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ktavn"]
+atlas = ExtResource("1_hn04l")
+region = Rect2(64, 96, 16, 16)
+
+[sub_resource type="LabelSettings" id="LabelSettings_nwwcf"]
+font_size = 7
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_joti5"]
+atlas = ExtResource("1_hn04l")
+region = Rect2(188, 62, 47, 31)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2hoj0"]
+atlas = ExtResource("1_hn04l")
+region = Rect2(48, 96, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pqe34"]
+atlas = ExtResource("1_hn04l")
+region = Rect2(64, 96, 16, 16)
+
+[sub_resource type="Animation" id="Animation_g4027"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SettingsDialog/NinePatchRect/MarginContainer:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_8pk4w"]
 resource_name = "open_SettingsDialog"
@@ -72,25 +113,10 @@ tracks/2/path = NodePath("SettingsDialog/NinePatchRect/MarginContainer:visible")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0.033333335, 0.8333333, 1),
+"times": PackedFloat32Array(0, 0.98, 1),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
 "values": [false, false, true]
-}
-
-[sub_resource type="Animation" id="Animation_g4027"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("SettingsDialog/NinePatchRect/MarginContainer:visible")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ktavn"]
@@ -106,6 +132,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = SubResource("Theme_sfh0t")
 script = ExtResource("1_egfx5")
 
 [node name="BottomButtons" type="MarginContainer" parent="."]
@@ -168,26 +195,6 @@ layout_mode = 2
 texture_normal = SubResource("AtlasTexture_on0i6")
 texture_pressed = SubResource("AtlasTexture_hiv0i")
 
-[node name="HelpDialog" type="MarginContainer" parent="."]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -40.0
-offset_right = 40.0
-offset_bottom = 100.0
-grow_horizontal = 2
-theme_override_constants/margin_top = 25
-
-[node name="NinePatchRect" type="NinePatchRect" parent="HelpDialog"]
-visible = false
-layout_mode = 2
-texture = SubResource("AtlasTexture_joti5")
-patch_margin_left = 4
-patch_margin_top = 4
-patch_margin_right = 4
-patch_margin_bottom = 4
-
 [node name="SettingsDialog" type="MarginContainer" parent="."]
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 1
@@ -201,7 +208,7 @@ grow_horizontal = 2
 theme_override_constants/margin_top = 25
 
 [node name="NinePatchRect" type="NinePatchRect" parent="SettingsDialog"]
-custom_minimum_size = Vector2(0, 96.89655)
+custom_minimum_size = Vector2(0, 100)
 layout_mode = 2
 texture = SubResource("AtlasTexture_c62eg")
 patch_margin_left = 4
@@ -228,15 +235,49 @@ grow_vertical = 2
 [node name="VBoxContainer" type="VBoxContainer" parent="SettingsDialog/NinePatchRect/MarginContainer"]
 layout_mode = 2
 
+[node name="Label" type="Label" parent="SettingsDialog/NinePatchRect/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Music"
+label_settings = SubResource("LabelSettings_on0i6")
+
 [node name="HBoxContainer" type="HBoxContainer" parent="SettingsDialog/NinePatchRect/MarginContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="TextureRect" type="TextureRect" parent="SettingsDialog/NinePatchRect/MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="SoundIcon1" type="TextureRect" parent="SettingsDialog/NinePatchRect/MarginContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 texture = SubResource("AtlasTexture_8pk4w")
 
+[node name="HSlider" type="HSlider" parent="SettingsDialog/NinePatchRect/MarginContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_icons/grabber = SubResource("AtlasTexture_g4027")
+theme_override_icons/grabber_highlight = SubResource("AtlasTexture_ktavn")
+theme_override_icons/grabber_disabled = SubResource("AtlasTexture_g4027")
+max_value = 3.0
+
+[node name="Label2" type="Label" parent="SettingsDialog/NinePatchRect/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "SFX"
+label_settings = SubResource("LabelSettings_nwwcf")
+
 [node name="HBoxContainer2" type="HBoxContainer" parent="SettingsDialog/NinePatchRect/MarginContainer/VBoxContainer"]
 layout_mode = 2
+
+[node name="SoundIcon2" type="TextureRect" parent="SettingsDialog/NinePatchRect/MarginContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+texture = SubResource("AtlasTexture_joti5")
+
+[node name="HSlider2" type="HSlider" parent="SettingsDialog/NinePatchRect/MarginContainer/VBoxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_icons/grabber = SubResource("AtlasTexture_2hoj0")
+theme_override_icons/grabber_highlight = SubResource("AtlasTexture_pqe34")
+theme_override_icons/grabber_disabled = SubResource("AtlasTexture_2hoj0")
+max_value = 3.0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -245,3 +286,5 @@ libraries = {
 
 [connection signal="pressed" from="BottomButtons/NinePatchRect/HBoxContainer/SettingsButton" to="." method="_on_settings_button_pressed"]
 [connection signal="pressed" from="TopButtons/HelpButton" to="." method="_on_help_button_pressed"]
+[connection signal="value_changed" from="SettingsDialog/NinePatchRect/MarginContainer/VBoxContainer/HBoxContainer/HSlider" to="." method="_on_h_slider_value_changed"]
+[connection signal="value_changed" from="SettingsDialog/NinePatchRect/MarginContainer/VBoxContainer/HBoxContainer2/HSlider2" to="." method="_on_h_slider_2_value_changed"]

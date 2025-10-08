@@ -1,8 +1,11 @@
 extends Control
 
-@onready var help_dialog:= $HelpDialog/NinePatchRect
+
 @onready var settings_dialog:= $SettingsDialog/NinePatchRect
 @onready var animation_player:= $AnimationPlayer
+@onready var sound_icon_1: TextureRect = $SettingsDialog/NinePatchRect/MarginContainer/VBoxContainer/HBoxContainer/SoundIcon1
+@onready var sound_icon_2: TextureRect = $SettingsDialog/NinePatchRect/MarginContainer/VBoxContainer/HBoxContainer2/SoundIcon2
+
 
 enum SoundIcons {
 	MUTE = 188,
@@ -13,21 +16,17 @@ enum SoundIcons {
 
 func _ready() -> void:
 	settings_dialog.visible  = false
+
 	settings_dialog.custom_minimum_size = Vector2(0,0)
+	#sound_icon_1.texture.region = Rect2(SoundIcons.HIGH, 62,47,31)
 
 
 
-func _on_help_button_pressed() -> void:
-	if help_dialog.visible == true:
-		help_dialog.visible = false
-	if help_dialog.visible == false:
-		help_dialog.visible = true
+
 	
 
 
 func _on_settings_button_pressed() -> void:
-	if help_dialog.visible == true:
-		help_dialog.visible = false
 	if settings_dialog.visible == false:
 		animation_player.play("open_SettingsDialog")
 	else:
@@ -35,3 +34,29 @@ func _on_settings_button_pressed() -> void:
 		await animation_player.animation_finished
 		settings_dialog.visible = false
 		
+
+
+func _on_h_slider_value_changed(value: float) -> void:
+	print("changed")
+	match value:
+		0.0:
+			sound_icon_1.texture.region = Rect2(SoundIcons.MUTE, 62,47,31)
+		1.0:
+			sound_icon_1.texture.region = Rect2(SoundIcons.LOW, 62,47,31)
+		2.0:
+			sound_icon_1.texture.region = Rect2(SoundIcons.MEDIUM, 62,47,31)
+		3.0:
+			sound_icon_1.texture.region = Rect2(SoundIcons.HIGH, 62,47,31)
+
+
+func _on_h_slider_2_value_changed(value: float) -> void:
+	print("changed")
+	match value:
+		0.0:
+			sound_icon_2.texture.region = Rect2(SoundIcons.MUTE, 62,47,31)
+		1.0:
+			sound_icon_2.texture.region = Rect2(SoundIcons.LOW, 62,47,31)
+		2.0:
+			sound_icon_2.texture.region = Rect2(SoundIcons.MEDIUM, 62,47,31)
+		3.0:
+			sound_icon_2.texture.region = Rect2(SoundIcons.HIGH, 62,47,31)
