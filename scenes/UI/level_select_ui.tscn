@@ -1,0 +1,220 @@
+[gd_scene load_steps=12 format=3 uid="uid://l2fh7ixjpux7"]
+
+[ext_resource type="Texture2D" uid="uid://b15t1e04vrrkp" path="res://assets/graphics/ui elements/UI elements.png" id="1_3dvib"]
+[ext_resource type="Script" uid="uid://dwrqd5c1e5y1l" path="res://scenes/UI/level_select_ui.gd" id="1_sn5pg"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sn5pg"]
+atlas = ExtResource("1_3dvib")
+region = Rect2(188, 93, 47, 31)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1b4xk"]
+atlas = ExtResource("1_3dvib")
+region = Rect2(235, 93, 47, 31)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yddxr"]
+atlas = ExtResource("1_3dvib")
+region = Rect2(94, 62, 47, 31)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5mc3t"]
+atlas = ExtResource("1_3dvib")
+region = Rect2(141, 62, 47, 31)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hdx3d"]
+atlas = ExtResource("1_3dvib")
+region = Rect2(0, 124, 47, 31)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_paw2n"]
+atlas = ExtResource("1_3dvib")
+region = Rect2(47, 124, 47, 31)
+
+[sub_resource type="Animation" id="Animation_yddxr"]
+length = 0.001
+
+[sub_resource type="Animation" id="Animation_1b4xk"]
+resource_name = "open_TextBox"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TextBox:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("TextBox:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(205, 104), Vector2(205, 70)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("TextBox:size")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(115, 6), Vector2(115, 40)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_5mc3t"]
+_data = {
+&"RESET": SubResource("Animation_yddxr"),
+&"open_TextBox": SubResource("Animation_1b4xk")
+}
+
+[node name="LevelSelectUI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_sn5pg")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+custom_minimum_size = Vector2(80, 70)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_3dvib")
+region_rect = Rect2(282, 0, 94, 62)
+patch_margin_left = 4
+patch_margin_top = 4
+patch_margin_right = 4
+patch_margin_bottom = 4
+
+[node name="MarginContainer" type="MarginContainer" parent="NinePatchRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_top = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="NinePatchRect/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="PlayButton" type="TextureButton" parent="NinePatchRect/MarginContainer/VBoxContainer"]
+layout_mode = 2
+texture_normal = SubResource("AtlasTexture_sn5pg")
+texture_pressed = SubResource("AtlasTexture_1b4xk")
+
+[node name="HistoryButton" type="TextureButton" parent="NinePatchRect/MarginContainer/VBoxContainer"]
+layout_mode = 2
+texture_normal = SubResource("AtlasTexture_yddxr")
+texture_pressed = SubResource("AtlasTexture_5mc3t")
+
+[node name="TextBox" type="NinePatchRect" parent="."]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -115.0
+offset_top = 14.0
+offset_bottom = 54.0
+grow_horizontal = 0
+grow_vertical = 2
+texture = ExtResource("1_3dvib")
+region_rect = Rect2(188, 0, 94, 62)
+patch_margin_left = 3
+patch_margin_top = 3
+patch_margin_right = 3
+patch_margin_bottom = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="TextBox"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 3
+theme_override_constants/margin_top = 2
+theme_override_constants/margin_right = 3
+theme_override_constants/margin_bottom = 2
+
+[node name="TextEdit" type="LineEdit" parent="TextBox/MarginContainer"]
+layout_mode = 2
+placeholder_text = "type word"
+
+[node name="Confirm" type="MarginContainer" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.739
+anchor_top = 0.717
+anchor_right = 0.739
+anchor_bottom = 0.717
+offset_right = 47.0
+offset_bottom = 31.0
+
+[node name="ConfirmButton" type="TextureButton" parent="Confirm"]
+layout_mode = 2
+texture_normal = SubResource("AtlasTexture_hdx3d")
+texture_pressed = SubResource("AtlasTexture_paw2n")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_5mc3t")
+}
+
+[node name="Warning" type="MarginContainer" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -26.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="NinePatchRect" type="NinePatchRect" parent="Warning"]
+layout_mode = 2
+texture = ExtResource("1_3dvib")
+region_rect = Rect2(188, 124, 47, 31)
+patch_margin_left = 2
+patch_margin_top = 2
+patch_margin_right = 2
+patch_margin_bottom = 2
+
+[node name="Label" type="Label" parent="Warning/NinePatchRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "No special characters or numbers"
+horizontal_alignment = 1
+
+[connection signal="pressed" from="NinePatchRect/MarginContainer/VBoxContainer/PlayButton" to="." method="_on_play_button_pressed"]
+[connection signal="text_changed" from="TextBox/MarginContainer/TextEdit" to="." method="_on_text_edit_text_changed"]
+[connection signal="pressed" from="Confirm/ConfirmButton" to="." method="_on_confirm_button_pressed"]

@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://m4r5lftjqean"]
+
+[ext_resource type="Texture2D" uid="uid://d1jwke4yyjjrc" path="res://assets/graphics/ui elements/TitleScreenBackground.png" id="1_qi77a"]
+[ext_resource type="PackedScene" uid="uid://l2fh7ixjpux7" path="res://scenes/UI/level_select_ui.tscn" id="2_ngp83"]
+
+[node name="LevelSelect" type="Node2D"]
+
+[node name="Parallax2D" type="Parallax2D" parent="."]
+repeat_size = Vector2(640, 320)
+autoscroll = Vector2(-10, -10)
+
+[node name="Sprite2D" type="Sprite2D" parent="Parallax2D"]
+texture = ExtResource("1_qi77a")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="LevelSelectUI" parent="CanvasLayer" instance=ExtResource("2_ngp83")]

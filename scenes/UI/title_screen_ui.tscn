@@ -1,8 +1,10 @@
-[gd_scene load_steps=23 format=3 uid="uid://4pm656trduls"]
+[gd_scene load_steps=27 format=3 uid="uid://4pm656trduls"]
 
 [ext_resource type="Script" uid="uid://dichgsh28wgqw" path="res://scenes/UI/title_screen_ui.gd" id="1_egfx5"]
 [ext_resource type="Texture2D" uid="uid://b15t1e04vrrkp" path="res://assets/graphics/ui elements/UI elements.png" id="1_hn04l"]
 [ext_resource type="FontFile" uid="uid://cqsxlhcg6pjf5" path="res://assets/fonts/dogicapixel.ttf" id="1_nwwcf"]
+[ext_resource type="Texture2D" uid="uid://hmnkegph8t7c" path="res://assets/graphics/ui elements/logo.png" id="4_on0i6"]
+[ext_resource type="AudioStream" uid="uid://co317ev70xbl2" path="res://assets/audio/background/title_screen.wav" id="5_hiv0i"]
 
 [sub_resource type="Theme" id="Theme_sfh0t"]
 default_font = ExtResource("1_nwwcf")
@@ -79,6 +81,109 @@ tracks/0/keys = {
 "update": 1,
 "values": [false]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("HelpDialog/NinePatchRect:custom_minimum_size")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("HelpDialog/NinePatchRect/MarginContainer:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("HelpDialog/NinePatchRect:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Logo:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(87.5, -100)]
+}
+
+[sub_resource type="Animation" id="Animation_5cv73"]
+resource_name = "down_Logo"
+length = 8.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Logo:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 8.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(87.5, -100), Vector2(87.5, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_nwwcf"]
+resource_name = "open_HelpDialog"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("HelpDialog/NinePatchRect:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("HelpDialog/NinePatchRect:custom_minimum_size")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.49, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(100, 0), Vector2(100, 60)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("HelpDialog/NinePatchRect/MarginContainer:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.98, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, false, true]
+}
 
 [sub_resource type="Animation" id="Animation_8pk4w"]
 resource_name = "open_SettingsDialog"
@@ -122,6 +227,8 @@ tracks/2/keys = {
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ktavn"]
 _data = {
 &"RESET": SubResource("Animation_g4027"),
+&"down_Logo": SubResource("Animation_5cv73"),
+&"open_HelpDialog": SubResource("Animation_nwwcf"),
 &"open_SettingsDialog": SubResource("Animation_8pk4w")
 }
 
@@ -134,6 +241,17 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = SubResource("Theme_sfh0t")
 script = ExtResource("1_egfx5")
+
+[node name="Logo" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -72.5
+offset_top = -100.0
+offset_right = 72.5
+offset_bottom = -38.0
+texture = ExtResource("4_on0i6")
 
 [node name="BottomButtons" type="MarginContainer" parent="."]
 custom_minimum_size = Vector2(0, 40)
@@ -208,7 +326,7 @@ grow_horizontal = 2
 theme_override_constants/margin_top = 25
 
 [node name="NinePatchRect" type="NinePatchRect" parent="SettingsDialog"]
-custom_minimum_size = Vector2(0, 100)
+visible = false
 layout_mode = 2
 texture = SubResource("AtlasTexture_c62eg")
 patch_margin_left = 4
@@ -279,12 +397,54 @@ theme_override_icons/grabber_highlight = SubResource("AtlasTexture_pqe34")
 theme_override_icons/grabber_disabled = SubResource("AtlasTexture_2hoj0")
 max_value = 3.0
 
+[node name="HelpDialog" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_right = 20.0
+offset_bottom = 40.0
+grow_horizontal = 2
+theme_override_constants/margin_top = 20
+
+[node name="NinePatchRect" type="NinePatchRect" parent="HelpDialog"]
+visible = false
+layout_mode = 2
+texture = ExtResource("1_hn04l")
+region_rect = Rect2(188, 0, 94, 62)
+patch_margin_left = 4
+patch_margin_top = 4
+patch_margin_right = 4
+patch_margin_bottom = 4
+
+[node name="MarginContainer" type="MarginContainer" parent="HelpDialog/NinePatchRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="HelpDialog/NinePatchRect/MarginContainer"]
+layout_mode = 2
+text = "this is a label"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 &"": SubResource("AnimationLibrary_ktavn")
 }
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_hiv0i")
+autoplay = true
+
+[connection signal="pressed" from="BottomButtons/NinePatchRect/HBoxContainer/StartButton" to="." method="_on_start_button_pressed"]
 [connection signal="pressed" from="BottomButtons/NinePatchRect/HBoxContainer/SettingsButton" to="." method="_on_settings_button_pressed"]
 [connection signal="pressed" from="TopButtons/HelpButton" to="." method="_on_help_button_pressed"]
 [connection signal="value_changed" from="SettingsDialog/NinePatchRect/MarginContainer/VBoxContainer/HBoxContainer/HSlider" to="." method="_on_h_slider_value_changed"]
 [connection signal="value_changed" from="SettingsDialog/NinePatchRect/MarginContainer/VBoxContainer/HBoxContainer2/HSlider2" to="." method="_on_h_slider_2_value_changed"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

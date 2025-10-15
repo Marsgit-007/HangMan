@@ -22,6 +22,7 @@ import/import_plugin/default_automatic_importer="Static Texture"
 [autoload]
 
 SceneManager="*res://addons/scene_manager/SceneManager.tscn"
+globals="*res://scripts/globals/globals.gd"
 
 [display]
 
@@ -33,6 +34,17 @@ window/stretch/scale_mode="integer"
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/AsepriteWizard/plugin.cfg", "res://addons/Todo_Manager/plugin.cfg", "res://addons/scene_manager/plugin.cfg")
+
+[importer_defaults]
+
+aseprite_wizard.plugin.static-texture={
+"first_frame_only": true,
+"layer/exclude_layers_pattern": "",
+"layer/only_visible_layers": false,
+"sheet/scale": 1,
+"sheet/sheet_columns": 12,
+"sheet/sheet_type": "packed"
+}
 
 [rendering]
 
