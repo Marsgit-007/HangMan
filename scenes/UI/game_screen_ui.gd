@@ -1,10 +1,27 @@
 extends Control
 
+
+@onready var v_box_container: VBoxContainer = $WordScreen/MarginContainer/VBoxContainer
+@onready var word_container_scene:PackedScene = load("res://scenes/UI/word_container.tscn")
+
 var input_word: String
 var split
-
+var word_count:int
+var word_container
 
 func _ready() -> void:
+	#label.text = globals.word
+	var word = "thisisa ofthelimits"
+	
+	split = word.split(" ", true, 0)
+
+	for thing in split:
+		word_container = word_container_scene.instantiate()
+		v_box_container.add_child(word_container)
+		word_container.populate(thing)
+		
+
+#func _ready() -> void:
 	#DirAccess.make_dir_recursive_absolute("res://resources/Pressed_Textures/")
 	#for child in $MarginContainer/VBoxContainer/Row3.get_children():
 		#print(str(child) + child.name)

@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://b7u1086y5ilym"]
+
+[ext_resource type="Script" uid="uid://b465hjig6oexv" path="res://scenes/UI/word_container.gd" id="1_bbk00"]
+
+[node name="WordContainer" type="HBoxContainer"]
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_bbk00")

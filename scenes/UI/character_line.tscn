@@ -1,0 +1,29 @@
+[gd_scene load_steps=3 format=3 uid="uid://cd4vf41rgg0qr"]
+
+[ext_resource type="Script" uid="uid://fre8d7dkdwxf" path="res://scenes/UI/character_line.gd" id="2_jmjxq"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_d4o51"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[node name="CharacterLine" type="PanelContainer"]
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_d4o51")
+script = ExtResource("2_jmjxq")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+custom_minimum_size = Vector2(10, 2)
+layout_mode = 2
+size_flags_vertical = 8
+color = Color(0, 0, 0, 1)
+
+[node name="OffSetTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 2
+text = "A"
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[connection signal="timeout" from="OffSetTimer" to="." method="_on_off_set_timer_timeout"]
