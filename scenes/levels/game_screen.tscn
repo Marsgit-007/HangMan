@@ -1,9 +1,25 @@
-[gd_scene load_steps=2 format=3 uid="uid://b511uow8wxrg1"]
+[gd_scene load_steps=4 format=3 uid="uid://b511uow8wxrg1"]
 
+[ext_resource type="Script" uid="uid://hrkd3axxfe4f" path="res://scenes/levels/game_screen.gd" id="1_eugql"]
 [ext_resource type="PackedScene" uid="uid://crr3mji1l3ukf" path="res://scenes/UI/game_screen_ui.tscn" id="1_wsx0i"]
+[ext_resource type="SpriteFrames" uid="uid://3bpnvrt6m85d" path="res://assets/graphics/animations/hangman.res" id="2_f8ngn"]
 
 [node name="GameScreen" type="Node2D"]
+script = ExtResource("1_eugql")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="GameScreenUI" parent="CanvasLayer" instance=ExtResource("1_wsx0i")]
+
+[node name="Hangman" type="AnimatedSprite2D" parent="CanvasLayer"]
+position = Vector2(240, 35)
+sprite_frames = ExtResource("2_f8ngn")
+
+[node name="FallTimer" type="Timer" parent="."]
+wait_time = 3.0
+
+[node name="FinishTimer" type="Timer" parent="."]
+wait_time = 6.0
+
+[connection signal="timeout" from="FallTimer" to="." method="_on_fall_timer_timeout"]
+[connection signal="timeout" from="FinishTimer" to="." method="_on_finish_timer_timeout"]

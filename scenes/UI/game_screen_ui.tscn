@@ -1,9 +1,10 @@
-[gd_scene load_steps=56 format=3 uid="uid://crr3mji1l3ukf"]
+[gd_scene load_steps=57 format=3 uid="uid://crr3mji1l3ukf"]
 
 [ext_resource type="Texture2D" uid="uid://ii77wdueiky7" path="res://assets/graphics/ui elements/keys.png" id="1_c7wxa"]
 [ext_resource type="Script" uid="uid://dx0tdkmjdod31" path="res://scenes/UI/game_screen_ui.gd" id="1_qg6xs"]
 [ext_resource type="Texture2D" uid="uid://b15t1e04vrrkp" path="res://assets/graphics/ui elements/UI elements.png" id="2_7pyq8"]
 [ext_resource type="Texture2D" path="res://resources/Pressed_Textures/A_pressed.tres" id="3_fex2n"]
+[ext_resource type="Material" uid="uid://4584b2k0tq63" path="res://scenes/UI/normal_material.tres" id="3_w7ovj"]
 [ext_resource type="Texture2D" path="res://resources/Pressed_Textures/B_pressed.tres" id="4_plqit"]
 [ext_resource type="Texture2D" path="res://resources/Pressed_Textures/C_pressed.tres" id="5_xen8i"]
 [ext_resource type="Texture2D" path="res://resources/Pressed_Textures/D_pressed.tres" id="6_7jgoq"]
@@ -142,6 +143,8 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_qg6xs")
+metadata/_edit_horizontal_guides_ = [6.0, 66.0, 0.0, 72.0]
+metadata/_edit_vertical_guides_ = [188.0, 288.0, 319.0]
 
 [node name="Keyboard" type="NinePatchRect" parent="."]
 custom_minimum_size = Vector2(0, 100)
@@ -175,47 +178,48 @@ layout_mode = 2
 layout_mode = 2
 alignment = 1
 
-[node name="A" type="TextureButton" parent="Keyboard/MarginContainer/VBoxContainer/Row1"]
+[node name="A" type="TextureButton" parent="Keyboard/MarginContainer/VBoxContainer/Row1" groups=["key"]]
+material = ExtResource("3_w7ovj")
 layout_mode = 2
 texture_normal = SubResource("AtlasTexture_qg6xs")
 texture_pressed = ExtResource("3_fex2n")
 
-[node name="B" type="TextureButton" parent="Keyboard/MarginContainer/VBoxContainer/Row1"]
+[node name="B" type="TextureButton" parent="Keyboard/MarginContainer/VBoxContainer/Row1" groups=["key"]]
 layout_mode = 2
 texture_normal = SubResource("AtlasTexture_fex2n")
 texture_pressed = ExtResource("4_plqit")
 
-[node name="C" type="TextureButton" parent="Keyboard/MarginContainer/VBoxContainer/Row1"]
+[node name="C" type="TextureButton" parent="Keyboard/MarginContainer/VBoxContainer/Row1" groups=["key"]]
 layout_mode = 2
 texture_normal = SubResource("AtlasTexture_4m3iu")
 texture_pressed = ExtResource("5_xen8i")
 
-[node name="D" type="TextureButton" parent="Keyboard/MarginContainer/VBoxContainer/Row1"]
+[node name="D" type="TextureButton" parent="Keyboard/MarginContainer/VBoxContainer/Row1" groups=["key"]]
 layout_mode = 2
 texture_normal = SubResource("AtlasTexture_kvnvu")
 texture_pressed = ExtResource("6_7jgoq")
 
-[node name="E" type="TextureButton" parent="Keyboard/MarginContainer/VBoxContainer/Row1"]
+[node name="E" type="TextureButton" parent="Keyboard/MarginContainer/VBoxContainer/Row1" groups=["key"]]
 layout_mode = 2
 texture_normal = SubResource("AtlasTexture_t40mf")
 texture_pressed = ExtResource("7_ouc6w")
 
-[node name="F" type="TextureButton" parent="Keyboard/MarginContainer/VBoxContainer/Row1"]
+[node name="F" type="TextureButton" parent="Keyboard/MarginContainer/VBoxContainer/Row1" groups=["key"]]
 layout_mode = 2
 texture_normal = SubResource("AtlasTexture_0f40j")
 texture_pressed = ExtResource("8_4quju")
 
-[node name="G" type="TextureButton" parent="Keyboard/MarginContainer/VBoxContainer/Row1"]
+[node name="G" type="TextureButton" parent="Keyboard/MarginContainer/VBoxContainer/Row1" groups=["key"]]
 layout_mode = 2
 texture_normal = SubResource("AtlasTexture_14udb")
 texture_pressed = ExtResource("9_hx2wq")
 
-[node name="H" type="TextureButton" parent="Keyboard/MarginContainer/VBoxContainer/Row1"]
+[node name="H" type="TextureButton" parent="Keyboard/MarginContainer/VBoxContainer/Row1" groups=["key"]]
 layout_mode = 2
 texture_normal = SubResource("AtlasTexture_wqn3d")
 texture_pressed = ExtResource("10_krcoo")
 
-[node name="I" type="TextureButton" parent="Keyboard/MarginContainer/VBoxContainer/Row1"]
+[node name="I" type="TextureButton" parent="Keyboard/MarginContainer/VBoxContainer/Row1" groups=["key"]]
 layout_mode = 2
 texture_normal = SubResource("AtlasTexture_soecl")
 texture_pressed = ExtResource("11_utmco")
@@ -224,47 +228,47 @@ texture_pressed = ExtResource("11_utmco")
 layout_mode = 2
 alignment = 1
 
-[node name="J" type="TextureButton" parent="Keyboard/MarginContainer/VBoxContainer/Row2"]
+[node name="J" type="TextureButton" parent="Keyboard/MarginContainer/VBoxContainer/Row2" groups=["key"]]
 layout_mode = 2
 texture_normal = SubResource("AtlasTexture_plqit")
 texture_pressed = ExtResource("12_cn8qy")
 
-[node name="K" type="TextureButton" parent="Keyboard/MarginContainer/VBoxContainer/Row2"]
+[node name="K" type="TextureButton" parent="Keyboard/MarginContainer/VBoxContainer/Row2" groups=["key"]]
 layout_mode = 2
 texture_normal = SubResource("AtlasTexture_xen8i")
 texture_pressed = ExtResource("13_pg5or")
 
-[node name="L" type="TextureButton" parent="Keyboard/MarginContainer/VBoxContainer/Row2"]
+[node name="L" type="TextureButton" parent="Keyboard/MarginContainer/VBoxContainer/Row2" groups=["key"]]
 layout_mode = 2
 texture_normal = SubResource("AtlasTexture_7jgoq")
 texture_pressed = ExtResource("14_pg5or")
 
-[node name="M" type="TextureButton" parent="Keyboard/MarginContainer/VBoxContainer/Row2"]
+[node name="M" type="TextureButton" parent="Keyboard/MarginContainer/VBoxContainer/Row2" groups=["key"]]
 layout_mode = 2
 texture_normal = SubResource("AtlasTexture_ouc6w")
 texture_pressed = ExtResource("14_7pyq8")
 
-[node name="N" type="TextureButton" parent="Keyboard/MarginContainer/VBoxContainer/Row2"]
+[node name="N" type="TextureButton" parent="Keyboard/MarginContainer/VBoxContainer/Row2" groups=["key"]]
 layout_mode = 2
 texture_normal = SubResource("AtlasTexture_4quju")
 texture_pressed = ExtResource("15_w7ovj")
 
-[node name="O" type="TextureButton" parent="Keyboard/MarginContainer/VBoxContainer/Row2"]
+[node name="O" type="TextureButton" parent="Keyboard/MarginContainer/VBoxContainer/Row2" groups=["key"]]
 layout_mode = 2
 texture_normal = SubResource("AtlasTexture_hx2wq")
 texture_pressed = ExtResource("16_cttla")
 
-[node name="P" type="TextureButton" parent="Keyboard/MarginContainer/VBoxContainer/Row2"]
+[node name="P" type="TextureButton" parent="Keyboard/MarginContainer/VBoxContainer/Row2" groups=["key"]]
 layout_mode = 2
 texture_normal = SubResource("AtlasTexture_krcoo")
 texture_pressed = ExtResource("17_g6sii")
 
-[node name="Q" type="TextureButton" parent="Keyboard/MarginContainer/VBoxContainer/Row2"]
+[node name="Q" type="TextureButton" parent="Keyboard/MarginContainer/VBoxContainer/Row2" groups=["key"]]
 layout_mode = 2
 texture_normal = SubResource("AtlasTexture_utmco")
 texture_pressed = ExtResource("18_xo0qx")
 
-[node name="R" type="TextureButton" parent="Keyboard/MarginContainer/VBoxContainer/Row2"]
+[node name="R" type="TextureButton" parent="Keyboard/MarginContainer/VBoxContainer/Row2" groups=["key"]]
 layout_mode = 2
 texture_normal = SubResource("AtlasTexture_ktctn")
 texture_pressed = ExtResource("19_yef3h")
@@ -273,42 +277,42 @@ texture_pressed = ExtResource("19_yef3h")
 layout_mode = 2
 alignment = 1
 
-[node name="S" type="TextureButton" parent="Keyboard/MarginContainer/VBoxContainer/Row3"]
+[node name="S" type="TextureButton" parent="Keyboard/MarginContainer/VBoxContainer/Row3" groups=["key"]]
 layout_mode = 2
 texture_normal = SubResource("AtlasTexture_bjnpi")
 texture_pressed = ExtResource("20_o80g3")
 
-[node name="T" type="TextureButton" parent="Keyboard/MarginContainer/VBoxContainer/Row3"]
+[node name="T" type="TextureButton" parent="Keyboard/MarginContainer/VBoxContainer/Row3" groups=["key"]]
 layout_mode = 2
 texture_normal = SubResource("AtlasTexture_11e67")
 texture_pressed = ExtResource("21_1ohkk")
 
-[node name="U" type="TextureButton" parent="Keyboard/MarginContainer/VBoxContainer/Row3"]
+[node name="U" type="TextureButton" parent="Keyboard/MarginContainer/VBoxContainer/Row3" groups=["key"]]
 layout_mode = 2
 texture_normal = SubResource("AtlasTexture_ye8lp")
 texture_pressed = ExtResource("22_pmf55")
 
-[node name="V" type="TextureButton" parent="Keyboard/MarginContainer/VBoxContainer/Row3"]
+[node name="V" type="TextureButton" parent="Keyboard/MarginContainer/VBoxContainer/Row3" groups=["key"]]
 layout_mode = 2
 texture_normal = SubResource("AtlasTexture_03pe4")
 texture_pressed = ExtResource("23_5rbde")
 
-[node name="W" type="TextureButton" parent="Keyboard/MarginContainer/VBoxContainer/Row3"]
+[node name="W" type="TextureButton" parent="Keyboard/MarginContainer/VBoxContainer/Row3" groups=["key"]]
 layout_mode = 2
 texture_normal = SubResource("AtlasTexture_v4fo8")
 texture_pressed = ExtResource("24_vhote")
 
-[node name="X" type="TextureButton" parent="Keyboard/MarginContainer/VBoxContainer/Row3"]
+[node name="X" type="TextureButton" parent="Keyboard/MarginContainer/VBoxContainer/Row3" groups=["key"]]
 layout_mode = 2
 texture_normal = SubResource("AtlasTexture_kfqq0")
 texture_pressed = ExtResource("25_i8icm")
 
-[node name="Y" type="TextureButton" parent="Keyboard/MarginContainer/VBoxContainer/Row3"]
+[node name="Y" type="TextureButton" parent="Keyboard/MarginContainer/VBoxContainer/Row3" groups=["key"]]
 layout_mode = 2
 texture_normal = SubResource("AtlasTexture_0rbfh")
 texture_pressed = ExtResource("26_ec7su")
 
-[node name="Z" type="TextureButton" parent="Keyboard/MarginContainer/VBoxContainer/Row3"]
+[node name="Z" type="TextureButton" parent="Keyboard/MarginContainer/VBoxContainer/Row3" groups=["key"]]
 layout_mode = 2
 texture_normal = SubResource("AtlasTexture_cn8qy")
 texture_pressed = ExtResource("27_g2txg")
@@ -334,7 +338,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/margin_left = 5
 theme_override_constants/margin_top = 3
-theme_override_constants/margin_right = 3
+theme_override_constants/margin_right = 5
 theme_override_constants/margin_bottom = 3
 
 [node name="VBoxContainer" type="VBoxContainer" parent="WordScreen/MarginContainer"]

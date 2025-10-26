@@ -1,0 +1,15 @@
+[gd_scene load_steps=4 format=3 uid="uid://cxpfax83426d8"]
+
+[ext_resource type="Script" uid="uid://djdwmorvy4lyg" path="res://scripts/globals/music_player.gd" id="1_sjtsq"]
+[ext_resource type="AudioStream" uid="uid://co317ev70xbl2" path="res://assets/audio/background/title_screen.wav" id="2_i708d"]
+[ext_resource type="AudioStream" uid="uid://cea1dkicbafmb" path="res://assets/audio/sound fx/click1.wav" id="3_i708d"]
+
+[node name="MusicPlayer" type="Node"]
+script = ExtResource("1_sjtsq")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_i708d")
+autoplay = true
+
+[node name="sfx" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_i708d")

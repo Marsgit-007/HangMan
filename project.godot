@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Hangman"
-run/main_scene="uid://crr3mji1l3ukf"
+run/main_scene="uid://b8swuwsigk57l"
 config/features=PackedStringArray("4.5", "GL Compatibility")
 config/icon="res://icon.svg"
 
@@ -23,6 +23,7 @@ import/import_plugin/default_automatic_importer="Static Texture"
 
 SceneManager="*res://addons/scene_manager/SceneManager.tscn"
 globals="*res://scripts/globals/globals.gd"
+MusicPlayer="*res://scripts/globals/music_player.tscn"
 
 [display]
 

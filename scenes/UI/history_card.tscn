@@ -1,0 +1,55 @@
+[gd_scene load_steps=5 format=3 uid="uid://dtwqcgj5m0s45"]
+
+[ext_resource type="Script" uid="uid://dea7beo6qby0i" path="res://scenes/UI/history_card.gd" id="1_0ivjr"]
+[ext_resource type="FontFile" uid="uid://cqsxlhcg6pjf5" path="res://assets/fonts/dogicapixel.ttf" id="1_67xjm"]
+
+[sub_resource type="Theme" id="Theme_c6ity"]
+default_font = ExtResource("1_67xjm")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7yncs"]
+bg_color = Color(0.72921425, 0.6597243, 0.65890825, 1)
+
+[node name="HistoryCard" type="Control"]
+custom_minimum_size = Vector2(184, 60)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme = SubResource("Theme_c6ity")
+script = ExtResource("1_0ivjr")
+metadata/_edit_horizontal_guides_ = [0.0, 40.0, 0.0, 62.0]
+metadata/_edit_vertical_guides_ = [117.0]
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+custom_minimum_size = Vector2(184, 60)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_7yncs")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer"]
+layout_mode = 2
+theme_override_constants/separation = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="Label" type="RichTextLabel" parent="PanelContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/normal_font_size = 16
+bbcode_enabled = true
+text = "hello"
+
+[node name="RichTextLabel" type="RichTextLabel" parent="PanelContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/normal_font_size = 16
+bbcode_enabled = true
+text = "guess:"
+
+[node name="TextureRect" type="TextureRect" parent="PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(100, 60)
+layout_mode = 2

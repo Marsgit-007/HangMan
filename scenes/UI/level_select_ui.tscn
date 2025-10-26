@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://l2fh7ixjpux7"]
+[gd_scene load_steps=14 format=3 uid="uid://l2fh7ixjpux7"]
 
 [ext_resource type="Texture2D" uid="uid://b15t1e04vrrkp" path="res://assets/graphics/ui elements/UI elements.png" id="1_3dvib"]
 [ext_resource type="Script" uid="uid://dwrqd5c1e5y1l" path="res://scenes/UI/level_select_ui.gd" id="1_sn5pg"]
@@ -74,6 +74,14 @@ _data = {
 &"RESET": SubResource("Animation_yddxr"),
 &"open_TextBox": SubResource("Animation_1b4xk")
 }
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h1x1u"]
+atlas = ExtResource("1_3dvib")
+region = Rect2(282, 124, 47, 31)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w665q"]
+atlas = ExtResource("1_3dvib")
+region = Rect2(329, 124, 47, 31)
 
 [node name="LevelSelectUI" type="Control"]
 layout_mode = 3
@@ -215,6 +223,76 @@ grow_vertical = 2
 text = "No special characters or numbers"
 horizontal_alignment = 1
 
+[node name="Warning2" type="MarginContainer" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -26.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="NinePatchRect" type="NinePatchRect" parent="Warning2"]
+layout_mode = 2
+texture = ExtResource("1_3dvib")
+region_rect = Rect2(188, 124, 47, 31)
+patch_margin_left = 2
+patch_margin_top = 2
+patch_margin_right = 2
+patch_margin_bottom = 2
+
+[node name="Label" type="Label" parent="Warning2/NinePatchRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "no words longer than 11"
+horizontal_alignment = 1
+
+[node name="Warning3" type="MarginContainer" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -26.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="NinePatchRect" type="NinePatchRect" parent="Warning3"]
+layout_mode = 2
+texture = ExtResource("1_3dvib")
+region_rect = Rect2(188, 124, 47, 31)
+patch_margin_left = 2
+patch_margin_top = 2
+patch_margin_right = 2
+patch_margin_bottom = 2
+
+[node name="Label" type="Label" parent="Warning3/NinePatchRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "max 2 words"
+horizontal_alignment = 1
+
+[node name="TextureButton" type="TextureButton" parent="."]
+layout_mode = 1
+anchors_preset = -1
+offset_left = 8.0
+offset_top = 8.0
+texture_normal = SubResource("AtlasTexture_h1x1u")
+texture_pressed = SubResource("AtlasTexture_w665q")
+
 [connection signal="pressed" from="NinePatchRect/MarginContainer/VBoxContainer/PlayButton" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="NinePatchRect/MarginContainer/VBoxContainer/HistoryButton" to="." method="_on_history_button_pressed"]
 [connection signal="text_changed" from="TextBox/MarginContainer/TextEdit" to="." method="_on_text_edit_text_changed"]
 [connection signal="pressed" from="Confirm/ConfirmButton" to="." method="_on_confirm_button_pressed"]
+[connection signal="pressed" from="TextureButton" to="." method="_on_texture_button_pressed"]

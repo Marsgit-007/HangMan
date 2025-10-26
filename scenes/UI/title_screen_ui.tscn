@@ -1,10 +1,8 @@
-[gd_scene load_steps=27 format=3 uid="uid://4pm656trduls"]
+[gd_scene load_steps=28 format=3 uid="uid://4pm656trduls"]
 
 [ext_resource type="Script" uid="uid://dichgsh28wgqw" path="res://scenes/UI/title_screen_ui.gd" id="1_egfx5"]
 [ext_resource type="Texture2D" uid="uid://b15t1e04vrrkp" path="res://assets/graphics/ui elements/UI elements.png" id="1_hn04l"]
 [ext_resource type="FontFile" uid="uid://cqsxlhcg6pjf5" path="res://assets/fonts/dogicapixel.ttf" id="1_nwwcf"]
-[ext_resource type="Texture2D" uid="uid://hmnkegph8t7c" path="res://assets/graphics/ui elements/logo.png" id="4_on0i6"]
-[ext_resource type="AudioStream" uid="uid://co317ev70xbl2" path="res://assets/audio/background/title_screen.wav" id="5_hiv0i"]
 
 [sub_resource type="Theme" id="Theme_sfh0t"]
 default_font = ExtResource("1_nwwcf")
@@ -24,6 +22,14 @@ region = Rect2(0, 31, 47, 31)
 [sub_resource type="AtlasTexture" id="AtlasTexture_5cv73"]
 atlas = ExtResource("1_hn04l")
 region = Rect2(47, 31, 47, 31)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f0fp0"]
+atlas = ExtResource("1_hn04l")
+region = Rect2(94, 124, 47, 31)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m45tx"]
+atlas = ExtResource("1_hn04l")
+region = Rect2(141, 124, 47, 31)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_on0i6"]
 atlas = ExtResource("1_hn04l")
@@ -66,6 +72,9 @@ region = Rect2(48, 96, 16, 16)
 [sub_resource type="AtlasTexture" id="AtlasTexture_pqe34"]
 atlas = ExtResource("1_hn04l")
 region = Rect2(64, 96, 16, 16)
+
+[sub_resource type="LabelSettings" id="LabelSettings_sfh0t"]
+font_size = 8
 
 [sub_resource type="Animation" id="Animation_g4027"]
 length = 0.001
@@ -117,34 +126,10 @@ tracks/3/keys = {
 "update": 1,
 "values": [false]
 }
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("Logo:position")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(87.5, -100)]
-}
 
 [sub_resource type="Animation" id="Animation_5cv73"]
 resource_name = "down_Logo"
 length = 8.4
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Logo:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 8.4),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(87.5, -100), Vector2(87.5, 0)]
-}
 
 [sub_resource type="Animation" id="Animation_nwwcf"]
 resource_name = "open_HelpDialog"
@@ -170,7 +155,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0, 0.49, 1),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Vector2(0, 0), Vector2(100, 0), Vector2(100, 60)]
+"values": [Vector2(0, 0), Vector2(150, 0), Vector2(150, 60)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -242,17 +227,6 @@ grow_vertical = 2
 theme = SubResource("Theme_sfh0t")
 script = ExtResource("1_egfx5")
 
-[node name="Logo" type="TextureRect" parent="."]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -72.5
-offset_top = -100.0
-offset_right = 72.5
-offset_bottom = -38.0
-texture = ExtResource("4_on0i6")
-
 [node name="BottomButtons" type="MarginContainer" parent="."]
 custom_minimum_size = Vector2(0, 40)
 layout_mode = 1
@@ -298,6 +272,11 @@ texture_pressed = SubResource("AtlasTexture_nwwcf")
 layout_mode = 2
 texture_normal = SubResource("AtlasTexture_sfh0t")
 texture_pressed = SubResource("AtlasTexture_5cv73")
+
+[node name="ExitButton" type="TextureButton" parent="BottomButtons/NinePatchRect/HBoxContainer"]
+layout_mode = 2
+texture_normal = SubResource("AtlasTexture_f0fp0")
+texture_pressed = SubResource("AtlasTexture_m45tx")
 
 [node name="TopButtons" type="MarginContainer" parent="."]
 custom_minimum_size = Vector2(0, 40)
@@ -428,22 +407,19 @@ grow_vertical = 2
 
 [node name="Label" type="Label" parent="HelpDialog/NinePatchRect/MarginContainer"]
 layout_mode = 2
-text = "this is a label"
+text = "Player1:enter a word
+Player2:guess it"
+label_settings = SubResource("LabelSettings_sfh0t")
 horizontal_alignment = 1
-vertical_alignment = 1
-autowrap_mode = 2
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 &"": SubResource("AnimationLibrary_ktavn")
 }
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("5_hiv0i")
-autoplay = true
-
 [connection signal="pressed" from="BottomButtons/NinePatchRect/HBoxContainer/StartButton" to="." method="_on_start_button_pressed"]
 [connection signal="pressed" from="BottomButtons/NinePatchRect/HBoxContainer/SettingsButton" to="." method="_on_settings_button_pressed"]
+[connection signal="pressed" from="BottomButtons/NinePatchRect/HBoxContainer/ExitButton" to="." method="_on_exit_button_pressed"]
 [connection signal="pressed" from="TopButtons/HelpButton" to="." method="_on_help_button_pressed"]
 [connection signal="value_changed" from="SettingsDialog/NinePatchRect/MarginContainer/VBoxContainer/HBoxContainer/HSlider" to="." method="_on_h_slider_value_changed"]
 [connection signal="value_changed" from="SettingsDialog/NinePatchRect/MarginContainer/VBoxContainer/HBoxContainer2/HSlider2" to="." method="_on_h_slider_2_value_changed"]

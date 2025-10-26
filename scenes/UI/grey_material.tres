@@ -1,0 +1,7 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://1fv5sdq0ywj0"]
+
+[ext_resource type="Shader" uid="uid://cmhb8b5s7c7ns" path="res://scenes/UI/grey_button.gdshader" id="1_jvkda"]
+
+[resource]
+shader = ExtResource("1_jvkda")
+shader_parameter/weighted = true

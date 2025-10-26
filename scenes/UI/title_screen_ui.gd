@@ -6,8 +6,8 @@ extends Control
 @onready var animation_player:= $AnimationPlayer
 @onready var sound_icon_1: TextureRect = $SettingsDialog/NinePatchRect/MarginContainer/VBoxContainer/HBoxContainer/SoundIcon1
 @onready var sound_icon_2: TextureRect = $SettingsDialog/NinePatchRect/MarginContainer/VBoxContainer/HBoxContainer2/SoundIcon2
-
-
+@onready var h_slider: HSlider = $SettingsDialog/NinePatchRect/MarginContainer/VBoxContainer/HBoxContainer/HSlider
+@onready var h_slider_2: HSlider = $SettingsDialog/NinePatchRect/MarginContainer/VBoxContainer/HBoxContainer2/HSlider2
 
 enum SoundIcons {
 	MUTE = 188,
@@ -17,13 +17,17 @@ enum SoundIcons {
 }
 
 func _ready() -> void:
-	animation_player.play("down_Logo")
+	change_volume_icon(MusicPlayer.background_vol, sound_icon_1)
+	h_slider.value = MusicPlayer.background_vol
+	change_volume_icon(MusicPlayer.sfx_vol, sound_icon_2)
+	h_slider_2.value = MusicPlayer.sfx_vol
 	settings_dialog.visible  = false
 	settings_dialog.custom_minimum_size = Vector2(0,0)
 	#sound_icon_1.texture.region = Rect2(SoundIcons.HIGH, 62,47,31)
 	
 	
 func _on_settings_button_pressed() -> void:
+	MusicPlayer.sfx.play()
 	if HelpDialog.visible == true:
 		HelpDialog.visible = false
 	if settings_dialog.visible == false:
@@ -34,20 +38,25 @@ func _on_settings_button_pressed() -> void:
 		settings_dialog.visible = false
 		
 func _on_help_button_pressed() -> void:
+	MusicPlayer.sfx.play()
 	if settings_dialog.visible == true:
 		settings_dialog.visible = false
 	if HelpDialog.visible == false:
 		animation_player.play("open_HelpDialog")
+
 	if HelpDialog.visible == true:
 		animation_player.play_backwards("open_HelpDialog")
 		await  animation_player.animation_finished
 		HelpDialog.visible = false
 
 func _on_h_slider_value_changed(value: float) -> void:
+	MusicPlayer.sfx.play()
 	change_volume_icon(value, sound_icon_1)
+	
 
 
 func _on_h_slider_2_value_changed(value: float) -> void:
+	MusicPlayer.sfx.play()
 	change_volume_icon(value, sound_icon_2)
 
 
@@ -64,15 +73,26 @@ func change_volume_icon(value, icon):
 			icon.texture.region = Rect2(SoundIcons.MEDIUM, 62,47,31)
 		3.0:
 			icon.texture.region = Rect2(SoundIcons.HIGH, 62,47,31)
-
-
-func _on_animation_player_animation_finished(anim_name: StringName) -> void:
-	if anim_name != "down_Logo":
-		return
+	
+	if icon == sound_icon_1:
+		MusicPlayer.background_vol = value
 	else:
-		$"../../Parallax2D".autoscroll = Vector2(-10,-10)
+		MusicPlayer.sfx_vol = value
+
+
+#func _on_animation_player_animation_finished(anim_name: StringName) -> void:
+	#if anim_name != "down_Logo":
+		#return
+	#else:
+		#$"../../Parallax2D".autoscroll = Vector2(-10,-10)
 
 
 func _on_start_button_pressed() -> void:
+	MusicPlayer.sfx.play()
 	SceneManager.fade_out()
 	SceneManager.change_scene("res://scenes/levels/level_select.tscn")
+
+
+func _on_exit_button_pressed() -> void:
+	MusicPlayer.sfx.play()
+	get_tree().quit()

@@ -21,6 +21,7 @@ color = Color(0, 0, 0, 1)
 one_shot = true
 
 [node name="Label" type="Label" parent="."]
+visible = false
 layout_mode = 2
 text = "A"
 horizontal_alignment = 1
