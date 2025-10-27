@@ -1,7 +1,0 @@
-[gd_resource type="Resource" script_class="GameInfo" load_steps=2 format=3 uid="uid://mx4x5vtqups3"]
-
-[ext_resource type="Script" uid="uid://gc4n5c4ow5wl" path="res://resources/save/GameSaveInfo.gd" id="1_vhdil"]
-
-[resource]
-script = ExtResource("1_vhdil")
-metadata/_custom_type_script = "uid://gc4n5c4ow5wl"

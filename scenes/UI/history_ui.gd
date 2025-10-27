@@ -2,7 +2,7 @@ extends Control
 
 @onready var v_box_container: VBoxContainer = $MarginContainer/NinePatchRect/MarginContainer/ScrollContainer/VBoxContainer
 
-var data: GameInfo = preload("res://save/Database.tres")
+var data: GameInfo = preload("user://Database.tres")
 var history_card_scene: PackedScene = preload("res://scenes/UI/history_card.tscn")
 var history_card
 

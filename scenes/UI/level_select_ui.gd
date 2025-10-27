@@ -7,7 +7,7 @@ extends Control
 @onready var warning: MarginContainer = $Warning
 @onready var warning_2: MarginContainer = $Warning2
 @onready var warning_3: MarginContainer = $Warning3
-@onready var database: GameInfo = preload("res://save/Database.tres")
+@onready var database: GameInfo = preload("user://Database.tres")
 @onready var history_button: TextureButton = $NinePatchRect/MarginContainer/VBoxContainer/HistoryButton
 @onready var  TITLE_SCREEN = preload("uid://co317ev70xbl2")
 

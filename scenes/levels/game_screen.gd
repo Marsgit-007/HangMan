@@ -3,7 +3,7 @@ extends Node2D
 @onready var game_screen_ui: Control = $CanvasLayer/GameScreenUI
 @onready var hangman_sprite: AnimatedSprite2D = $CanvasLayer/Hangman
 @onready var fall_timer: Timer = $FallTimer
-@onready var database = preload("res://save/Database.tres")
+@onready var database = preload("user://Database.tres")
 @onready var finish_timer: Timer = $FinishTimer
 @onready var action_bgm: AudioStream = preload("res://assets/audio/background/bgm_action_4.mp3")
 
